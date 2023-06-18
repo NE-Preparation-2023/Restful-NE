@@ -1,0 +1,1 @@
+export const DEFAULT_PROFILE = "https://www.cheatsheet.com/wp-content/uploads/2020/09/Keanu-Reeves-17.jpg";

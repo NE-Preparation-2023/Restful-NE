@@ -1,0 +1,91 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Serif', serif;
+}
+.dashboard {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+    background-color: #F5F5F5;
+}
+.sidebar{
+    width: 18%;
+}
+.main-container{
+    width: 82%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+}
+h1{
+    padding: 40px 35px;
+    color: #032;
+}
+.form-groups{
+    display: flex;
+    width: 750px;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    margin-bottom: 35px;
+}
+.form-control, .input-group{
+    width: 230px;
+    font-size: 13px;
+    box-shadow: 0px 2px 6px rgba(22, 121, 168, 0.25);
+    outline: none !important;
+    
+}
+.input-group{
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #d8dddd;
+}
+.input-group-append{
+    padding-left: 10px;
+    font-size: 13px;
+}
+.search{
+    border: none;
+    box-shadow: none;
+}
+.table{
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+tbody tr{
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.07);
+    margin-bottom: 5px;
+}
+
+.footer {
+    background-color: #032;
+    height: 8%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* for all devices with a max width of 767px, the body will have overflow: hidden */
+@media (max-width: 767px) {
+    body {
+      overflow: hidden;
+    }
+    .main-container{
+        overflow: auto;
+        position: relative;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        width: 79%;
+    }
+  }

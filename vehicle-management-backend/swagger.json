@@ -1,0 +1,533 @@
+{
+    "swagger" : "2.0",
+    "info": {
+        "description" : "Documentation of Vehicle Tracking Management API",
+        "version": "1.0.0.0",
+        "title": "Vehicle Tracking Management APIs",
+        "termsOfService" : "http://swagger.io/terms/",
+        "contact": {
+            "email" : "ciradukundaa@gmail.com",
+            "name" : "Clarisse IRADUKUNDA"
+        },
+        "licence": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "tags": [
+        {
+            "name": "User",
+            "description": "User operations"
+        },
+        {
+            "name": "Car Owner",
+            "description": "Car Owner operations"
+        },
+        {
+            "name": "Vehicle",
+            "description": "Vehicle operations"
+        }
+    ],
+    "paths": {
+        "/auth/signup": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Register user",
+                "description": "Register user",
+                "consumes" : [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object",
+                        "required": true,
+                        "properties": {
+                            "firstName": {
+                                "type": "string",
+                                "example": "Clarisse"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "Iradukunda"
+                            },
+                            "email": {
+                                "type": "string",
+                                "example": "iclarisse@gmail.com"
+                            },
+                            "password": {
+                                "type": "string"
+                            },
+                            "nationalID": {
+                                "type": "string",
+                                "example": "123456789876"
+                            },
+                            "phone": {
+                                "type" : "number",
+                                "example": 13456
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Login user",
+                "description": "Login user",
+                "operationId": "loginUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "User object",
+                        "required": true,
+                        "properties": {
+                            "email": {
+                                "type": "string",
+                                "example": "iclarisse@gmail.com"
+                            },
+                            "password": {
+                                "type": "string",
+                                "example": "qwerty"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/vehicle": {
+            "post": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Register vehicle",
+                "description": "Register vehicle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Vechicle object",
+                        "required": true,
+                        "properties": {
+                            "chassisNumber": {
+                                "type": "string",
+                                "example": "2345678"
+                            },
+                            "manufacturer": {
+                                "type": "string",
+                                "example": "toyota"
+                            },
+                            "manufactureYear":{
+                                "type": "number",
+                                "example": 2023
+                            },
+                            "price": {
+                                "type": "number",
+                                "example": 4500000000
+                            },
+                            "plateNumber": {
+                                "type": "string",
+                                "example": "RAD 345 E"
+                            },
+                            "modelName": {
+                                "type": "string",
+                                "example": "new model"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get all vehicles",
+                "description": "Get all vehicles",
+                "operationId": "Get all restaurant",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/vehicle/{id}": {
+            "get": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Get vehicle by ID",
+                "description": "Get all vehicle details by ID",
+                "operationId":" getVehicleById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of the vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Delete vehicle by Id",
+                "description": "Delete vehicle by id",
+                "operationId": "deleteVehicleById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of the vehicle",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Vehicle not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Vehicle"
+                ],
+                "summary": "Update vehicle by Id",
+                "description": "update vehicle by its id",
+                "operationId": "updateVehicleById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id of the vehicle to update",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "properties": {
+                            "chassisNumber": {
+                                "type": "string",
+                                "example": "2345678"
+                            },
+                            "manufacturer": {
+                                "type": "string",
+                                "example": "toyota"
+                            },
+                            "manufactureYear":{
+                                "type": "number",
+                                "example": 2023
+                            },
+                            "price": {
+                                "type": "number",
+                                "example": 4500000000
+                            },
+                            "plateNumber": {
+                                "type": "string",
+                                "example": "RAD 345 E"
+                            },
+                            "modelName": {
+                                "type": "string",
+                                "example": "new model"
+                            },
+                            "owner": {
+                                "type": "string",
+                                "example": "647736be9536c5b26b957e0c"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Vechicle successfully updated"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Vehicle not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        },
+        "/carOwner": {
+            "post": {
+                "tags": [
+                    "Car Owner"
+                ],
+                "summary": "Register car owner",
+                "description": "Register Car owner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Car Owner object",
+                        "required": true,
+                        "properties": {
+                            "firstName": {
+                                "type": "string",
+                                "example": "Clarisse"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "Iradukunda"
+                            },
+                            "nationalID": {
+                                "type": "number",
+                                "example": 234567
+                            },
+                            "phone": {
+                                "type": "string",
+                                "example": "0234567"
+                            },
+                            "address": {
+                                "type": "string",
+                                "example": "KG 398 K"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description":"Invalid input"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Car Owner"
+                ],
+                "summary": "Get all car owners",
+                "description": "Get all car owners",
+                "operationId": "getAllCarOwners",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            }
+        },
+        "/carOwner/{id}": {
+            "get": {
+                "tags": [
+                    "Car Owner"
+                ],
+                "summary": "Get car owner by id",
+                "description": "Get all car owner details by id",
+                "operationId":"getCarOwnerById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of car owner",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid input"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "Car Owner"
+                ],
+                "summary": "Update car owner by Id",
+                "description": "update car owner by its id",
+                "operationId": "updateCarOwnerById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "description": "Id of the car owner to update",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "properties": {
+                            "firstName": {
+                                "type": "string",
+                                "example": "Clarisse"
+                            },
+                            "lastName": {
+                                "type": "string",
+                                "example": "Iradukunda"
+                            },
+                            "nationalID":{
+                                "type": "string",
+                                "example": "123456789876"
+                            },
+                            "phone": {
+                                "type": "string",
+                                "example": "4500000000"
+                            },
+                            "address": {
+                                "type": "string",
+                                "example": "KG 398 K"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Car owner successfully updated"
+                    },
+                    "400": {
+                        "description": "Bad request"
+                    },
+                    "404": {
+                        "description": "Vehicle not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Car Owner"
+                ],
+                "summary": "Delete car owner by Id",
+                "description": "Delete car owner by id",
+                "operationId": "deleteCarOwnerById",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id of the car owner",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {  
+                    "204": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {}
+                        }
+                    },
+                    "404": {
+                        "description": "Car owner not found"
+                    },
+                    "500": {
+                        "description": "Internal server error"
+                    }
+                }
+            }
+        }
+    }
+}
